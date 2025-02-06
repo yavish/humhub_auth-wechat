@@ -1,0 +1,12 @@
+{
+    "id": "auth-wechat",
+    "name": "Wechat Sign-In",
+    "description": "Integrating Wechat Sign-In (OAuth 2.0).",
+    "keywords": [
+    ],
+    "version": "1.0.0",
+    "homepage": "https://github.com/yavish/humhub_auth-wechat",
+    "humhub": {
+        "minVersion": "1.6"
+    }
+}
