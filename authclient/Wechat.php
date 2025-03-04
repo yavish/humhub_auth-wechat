@@ -4,6 +4,7 @@
 namespace humhubContrib\auth\wechat\authclient;
 
 use yii\authclient\OAuth2;
+use yii\web\HttpException;
 use Yii;
  
 
@@ -86,6 +87,7 @@ class Wechat extends OAuth2
         }
         $params['appid'] = $this->clientId;
         $params['secret'] = $this->clientSecret;
+        $params['js_code'] = $authCode;
         return parent::fetchAccessToken($authCode, $params);
     }
 
