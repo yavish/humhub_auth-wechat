@@ -23,7 +23,10 @@ class Wechat extends OAuth2
     /**
      * @inheritdoc
      */
-    public $tokenUrl = 'https://api.weixin.qq.com/sns/oauth2/access_token';
+ 
+    // public $tokenUrl = 'https://api.weixin.qq.com/sns/oauth2/access_token';
+
+    public $tokenUrl = 'https://api.weixin.qq.com/sns/jscode2session';
 
     /**
      * @inheritdoc
@@ -85,9 +88,14 @@ class Wechat extends OAuth2
         if (!isset($_REQUEST['state']) || empty($authState) || strcmp($_REQUEST['state'], $authState) !== 0) {
             throw new HttpException(400, 'Invalid auth state parameter.');
         }
-        $params['appid'] = $this->clientId;
-        $params['secret'] = $this->clientSecret;
+        //友贝云小程序
+        $appId = 'wxe9ebc38a3ba8d886';
+        $appSecret = '499008a7889712377525554c8a816fb8';
+
+        $params['appid'] =  $appId;
+        $params['secret'] = $appSecret;
         $params['js_code'] = $authCode;
+        
         return parent::fetchAccessToken($authCode, $params);
     }
 
