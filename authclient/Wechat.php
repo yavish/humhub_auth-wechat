@@ -85,9 +85,9 @@ class Wechat extends OAuth2
 	public function fetchAccessToken($authCode, array $params = [])
     {
         $authState = $this->getState('authState');
-        if (!isset($_REQUEST['state']) || empty($authState) || strcmp($_REQUEST['state'], $authState) !== 0) {
-            throw new HttpException(400, 'Invalid auth state parameter.');
-        }
+        // if (!isset($_REQUEST['state']) || empty($authState) || strcmp($_REQUEST['state'], $authState) !== 0) {
+        //     throw new HttpException(400, 'Invalid auth state parameter.');
+        // }
         //友贝云小程序
         $appId = 'wxe9ebc38a3ba8d886';
         $appSecret = '499008a7889712377525554c8a816fb8';
@@ -95,7 +95,7 @@ class Wechat extends OAuth2
         $params['appid'] =  $appId;
         $params['secret'] = $appSecret;
         $params['js_code'] = $authCode;
-        
+
         return parent::fetchAccessToken($authCode, $params);
     }
 
